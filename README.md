@@ -140,9 +140,9 @@ Webhooks require Pro or higher plan.
 The [finance](./features/finance/) example shows the AnuraGate financial gateway. When the model's response contains a purchase intent (flight, hotel, subscription, etc.), AnuraGate automatically:
 
 1. Detects the intent using a two-tier scanner (regex + LLM)
-2. Sends you an approval request via your configured watcher (WhatsApp, Slack, or Telegram)
+2. Sends you an approval request via your configured watcher (WhatsApp, Slack, or Telegram) — or asks inline in the chat if no watcher is running
 3. Issues a single-use virtual card on approval
-4. Declines and notifies the agent if you say no
+4. Declines and notifies the agent if you say no (or if no policy covers the transaction)
 
 This script is just the chat interface — intent detection, approval routing, and card issuance all happen inside AnuraGate.
 
@@ -154,8 +154,14 @@ node index.js
 
 Requires Pro or higher plan. One-time setup in the dashboard:
 - Finance → Wallets → create a wallet with a spend limit
-- Finance → Approver → set your platform and chat ID
-- Have the corresponding watcher running (whatsapp/, slack/, or telegram/)
+- Finance → Transaction Policies → create a policy with your rules and set **Require Approval** on. Rules must match the purchase for it to be authorized — a policy with no rules matches everything.
+- Finance → Approver → set your platform and recipient ID. For WhatsApp, enter your phone number (e.g. `+923164706597`) — AnuraGate normalizes the format automatically.
+- Have the corresponding watcher running (whatsapp/, slack/, or telegram/). If the watcher is offline, approval falls back to the chat conversation — reply `YES` or `NO` directly.
+
+**Approval timeouts (local dev):** Pending approvals auto-expire via a scheduled cron job. When running locally, trigger it manually if an intent gets stuck:
+```bash
+curl http://localhost:3000/api/cron/finance-timeouts
+```
 
 ---
 
