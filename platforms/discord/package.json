@@ -1,0 +1,16 @@
+{
+  "name": "anuragate-example-discord",
+  "version": "1.0.0",
+  "description": "AnuraGate Discord AI agent example",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@anura-gate/watcher-discord": "^0.1.0",
+    "dotenv": "^17.3.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

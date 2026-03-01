@@ -1,0 +1,16 @@
+{
+  "name": "anuragate-example-github",
+  "version": "1.0.0",
+  "description": "AnuraGate GitHub AI agent example",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@anura-gate/watcher-github": "^0.1.0",
+    "dotenv": "^17.3.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

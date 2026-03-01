@@ -1,0 +1,16 @@
+{
+  "name": "anuragate-example-whatsapp",
+  "version": "1.0.0",
+  "description": "AnuraGate WhatsApp AI agent example",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@anura-gate/watcher-whatsapp": "^0.3.0",
+    "dotenv": "^17.3.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

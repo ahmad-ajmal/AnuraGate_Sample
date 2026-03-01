@@ -1,0 +1,17 @@
+{
+  "name": "anuragate-example-gmail",
+  "version": "1.0.0",
+  "description": "AnuraGate Gmail AI agent example",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@anura-gate/watcher-gmail": "^0.1.0",
+    "dotenv": "^17.3.1",
+    "nodemailer": "^6.9.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

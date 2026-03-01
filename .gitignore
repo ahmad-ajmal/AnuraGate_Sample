@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Environment — never commit credentials
+.env
+
+# WhatsApp session data
+.wwebjs_auth/
+.wwebjs_cache/
+
+# Telegram session data
+.telegram_session/
+
+# OS
+.DS_Store
+Thumbs.db
+.claude/

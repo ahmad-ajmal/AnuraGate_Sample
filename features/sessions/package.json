@@ -1,0 +1,15 @@
+{
+  "name": "anuragate-example-sessions",
+  "version": "1.0.0",
+  "description": "AnuraGate session tracking and circuit breaker example",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
