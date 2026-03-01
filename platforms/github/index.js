@@ -37,6 +37,7 @@ const MODEL = process.env.MODEL;
 const SYSTEM_PROMPT =
   process.env.SYSTEM_PROMPT ||
   "You are a helpful code review assistant. Keep your responses concise and technical. When reviewing code, focus on correctness, clarity, and potential bugs.";
+const GATE_URL = process.env.GATE_URL || "https://anuragate.com";
 
 if (!GATE_KEY || !INTEGRATION_ID || !GITHUB_TOKEN || !GITHUB_WEBHOOK_SECRET) {
   console.error(
@@ -64,7 +65,7 @@ async function chat(contextKey, userMessage) {
   const history = getHistory(contextKey);
   history.push({ role: "user", content: userMessage });
 
-  const res = await fetch("https://anuragate.com/v1/chat/completions", {
+  const res = await fetch(`${GATE_URL}/v1/chat/completions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

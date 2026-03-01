@@ -32,6 +32,7 @@ const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const WEBHOOK_SECRET = process.env.TELEGRAM_WEBHOOK_SECRET;
 const MODEL = process.env.MODEL;
 const SYSTEM_PROMPT = process.env.SYSTEM_PROMPT || "You are a helpful assistant.";
+const GATE_URL = process.env.GATE_URL || "https://anuragate.com";
 
 if (!GATE_KEY || !INTEGRATION_ID || !BOT_TOKEN || !WEBHOOK_SECRET) {
   console.error(
@@ -59,7 +60,7 @@ async function chat(chatId, userMessage) {
   const history = getHistory(chatId);
   history.push({ role: "user", content: userMessage });
 
-  const res = await fetch("https://anuragate.com/v1/chat/completions", {
+  const res = await fetch(`${GATE_URL}/v1/chat/completions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

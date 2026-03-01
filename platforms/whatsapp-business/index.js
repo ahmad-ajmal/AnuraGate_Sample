@@ -38,6 +38,7 @@ const APP_SECRET = process.env.WHATSAPP_APP_SECRET;
 const VERIFY_TOKEN = process.env.WHATSAPP_VERIFY_TOKEN;
 const MODEL = process.env.MODEL;
 const SYSTEM_PROMPT = process.env.SYSTEM_PROMPT || "You are a helpful assistant.";
+const GATE_URL = process.env.GATE_URL || "https://anuragate.com";
 
 if (!GATE_KEY || !INTEGRATION_ID || !ACCESS_TOKEN || !PHONE_NUMBER_ID || !APP_SECRET || !VERIFY_TOKEN) {
   console.error(
@@ -67,7 +68,7 @@ async function chat(senderId, userMessage) {
   const history = getHistory(senderId);
   history.push({ role: "user", content: userMessage });
 
-  const res = await fetch("https://anuragate.com/v1/chat/completions", {
+  const res = await fetch(`${GATE_URL}/v1/chat/completions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

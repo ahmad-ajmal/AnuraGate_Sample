@@ -22,6 +22,7 @@ const EMAIL = process.env.OUTLOOK_EMAIL;
 const PASSWORD = process.env.OUTLOOK_PASSWORD;
 const MODEL = process.env.MODEL;
 const SYSTEM_PROMPT = process.env.SYSTEM_PROMPT || "You are a helpful assistant.";
+const GATE_URL = process.env.GATE_URL || "https://anuragate.com";
 
 if (!GATE_KEY || !INTEGRATION_ID || !EMAIL || !PASSWORD) {
   console.error(
@@ -58,7 +59,7 @@ async function chat(subject, userMessage) {
   const history = getHistory(subject);
   history.push({ role: "user", content: userMessage });
 
-  const res = await fetch("https://anuragate.com/v1/chat/completions", {
+  const res = await fetch(`${GATE_URL}/v1/chat/completions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

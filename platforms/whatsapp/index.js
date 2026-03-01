@@ -20,6 +20,7 @@ const GATE_KEY = process.env.GATE_KEY;
 const INTEGRATION_ID = process.env.INTEGRATION_ID;
 const MODEL = process.env.MODEL;
 const SYSTEM_PROMPT = process.env.SYSTEM_PROMPT || "You are a helpful assistant.";
+const GATE_URL = process.env.GATE_URL || "https://anuragate.com";
 
 if (!GATE_KEY || !INTEGRATION_ID) {
   console.error("Missing GATE_KEY or INTEGRATION_ID. Copy .env.example to .env and fill it in.");
@@ -35,7 +36,7 @@ const history = [{ role: "system", content: SYSTEM_PROMPT }];
 async function chat(userMessage) {
   history.push({ role: "user", content: userMessage });
 
-  const res = await fetch("https://anuragate.com/v1/chat/completions", {
+  const res = await fetch(`${GATE_URL}/v1/chat/completions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

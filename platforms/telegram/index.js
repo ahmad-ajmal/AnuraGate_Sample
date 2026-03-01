@@ -21,6 +21,7 @@ const API_ID = process.env.TELEGRAM_API_ID;
 const API_HASH = process.env.TELEGRAM_API_HASH;
 const MODEL = process.env.MODEL;
 const SYSTEM_PROMPT = process.env.SYSTEM_PROMPT || "You are a helpful assistant.";
+const GATE_URL = process.env.GATE_URL || "https://anuragate.com";
 
 if (!GATE_KEY || !INTEGRATION_ID || !API_ID || !API_HASH) {
   console.error(
@@ -39,7 +40,7 @@ const history = [{ role: "system", content: SYSTEM_PROMPT }];
 async function chat(userMessage) {
   history.push({ role: "user", content: userMessage });
 
-  const res = await fetch("https://anuragate.com/v1/chat/completions", {
+  const res = await fetch(`${GATE_URL}/v1/chat/completions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

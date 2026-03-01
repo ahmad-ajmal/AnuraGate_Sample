@@ -24,6 +24,7 @@ const MODEL = process.env.MODEL;
 const SYSTEM_PROMPT =
   process.env.SYSTEM_PROMPT ||
   "You are a helpful assistant. Use the available tools when they would help answer the user's question.";
+const GATE_URL = process.env.GATE_URL || "https://anuragate.com";
 
 if (!GATE_KEY) {
   console.error("Missing GATE_KEY. Copy .env.example to .env and fill it in.");
@@ -114,7 +115,7 @@ async function chat(userMessage) {
 
   // Keep looping until the model gives a final text response (no more tool calls)
   while (true) {
-    const res = await fetch("https://anuragate.com/v1/chat/completions", {
+    const res = await fetch(`${GATE_URL}/v1/chat/completions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

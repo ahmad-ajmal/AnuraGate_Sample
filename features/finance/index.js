@@ -40,6 +40,7 @@ const MODEL = process.env.MODEL;
 const SYSTEM_PROMPT =
   process.env.SYSTEM_PROMPT ||
   "You are a helpful travel and shopping assistant. Help the user find and book flights, hotels, and make purchases. When you identify something specific to purchase, describe the item, merchant, and price clearly before proceeding.";
+const GATE_URL = process.env.GATE_URL || "https://anuragate.com";
 
 if (!GATE_KEY) {
   console.error("Missing GATE_KEY. Copy .env.example to .env and fill it in.");
@@ -65,7 +66,7 @@ const history = [{ role: "system", content: SYSTEM_PROMPT }];
 async function chat(userMessage) {
   history.push({ role: "user", content: userMessage });
 
-  const res = await fetch("https://anuragate.com/v1/chat/completions", {
+  const res = await fetch(`${GATE_URL}/v1/chat/completions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
