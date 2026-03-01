@@ -58,6 +58,7 @@ async function chat(userMessage) {
 // ---------------------------------------------------------------------------
 
 const watcher = new GateDiscordWatcher({
+  gateUrl: GATE_URL,
   gateKey: GATE_KEY,
   integrationId: INTEGRATION_ID,
   sessionId: "discord-demo",

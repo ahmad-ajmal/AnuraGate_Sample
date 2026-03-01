@@ -87,6 +87,7 @@ async function chat(contextKey, userMessage) {
 // ---------------------------------------------------------------------------
 
 const watcher = new GateGitHubWatcher({
+  gateUrl: GATE_URL,
   gateKey: GATE_KEY,
   integrationId: INTEGRATION_ID,
   githubToken: GITHUB_TOKEN,

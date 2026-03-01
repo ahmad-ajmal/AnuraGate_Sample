@@ -71,6 +71,7 @@ async function chat(channelId, userMessage) {
 // ---------------------------------------------------------------------------
 
 const watcher = new GateSlackWatcher({
+  gateUrl: GATE_URL,
   gateKey: GATE_KEY,
   integrationId: INTEGRATION_ID,
   botToken: BOT_TOKEN,

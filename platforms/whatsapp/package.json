@@ -7,7 +7,7 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "@anura-gate/watcher-whatsapp": "^0.3.0",
+    "@anura-gate/watcher-whatsapp": "^0.4.1",
     "dotenv": "^17.3.1"
   },
   "engines": {

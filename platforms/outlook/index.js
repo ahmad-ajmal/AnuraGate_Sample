@@ -81,6 +81,7 @@ async function chat(subject, userMessage) {
 // ---------------------------------------------------------------------------
 
 const watcher = new GateOutlookWatcher({
+  gateUrl: GATE_URL,
   gateKey: GATE_KEY,
   integrationId: INTEGRATION_ID,
   sessionId: "outlook-demo",

@@ -62,6 +62,7 @@ async function chat(userMessage) {
 // ---------------------------------------------------------------------------
 
 const watcher = new GateWatcherTelegram({
+  gateUrl: GATE_URL,
   gateKey: GATE_KEY,
   integrationId: INTEGRATION_ID,
   sessionId: "telegram-demo",

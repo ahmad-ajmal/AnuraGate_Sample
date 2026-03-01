@@ -57,7 +57,10 @@ async function chat(userMessage) {
 // Watcher
 // ---------------------------------------------------------------------------
 
+const sentByBot = new Set(); // track IDs of messages sent by the bot to avoid re-processing
+
 const watcher = new GateWatcher({
+  gateUrl: GATE_URL,
   gateKey: GATE_KEY,
   integrationId: INTEGRATION_ID,
   sessionId: "whatsapp-demo",
@@ -80,6 +83,13 @@ watcher.on("message_sent", async (msg) => {
   const ownId = client?.info?.wid?._serialized;
   if (!ownId || msg.to !== ownId) return;
 
+  // Skip replies sent by this bot
+  const msgId = msg.id?._serialized;
+  if (msgId && sentByBot.has(msgId)) {
+    sentByBot.delete(msgId);
+    return;
+  }
+
   const text = msg.body?.trim();
   if (!text) return;
 
@@ -88,7 +98,8 @@ watcher.on("message_sent", async (msg) => {
   try {
     const reply = await chat(text);
     console.log(`Assistant: ${reply}\n`);
-    await client.sendMessage(ownId, reply);
+    const sent = await client.sendMessage(ownId, reply);
+    if (sent?.id?._serialized) sentByBot.add(sent.id._serialized);
   } catch (err) {
     console.error("Error:", err.message);
   }

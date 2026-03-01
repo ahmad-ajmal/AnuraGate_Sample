@@ -69,6 +69,7 @@ async function chat(channelId, userMessage) {
 // ---------------------------------------------------------------------------
 
 const watcher = new GateDiscordBotWatcher({
+  gateUrl: GATE_URL,
   gateKey: GATE_KEY,
   integrationId: INTEGRATION_ID,
   botToken: BOT_TOKEN,

@@ -81,6 +81,7 @@ async function chat(subject, userMessage) {
 // ---------------------------------------------------------------------------
 
 const watcher = new GateGmailWatcher({
+  gateUrl: GATE_URL,
   gateKey: GATE_KEY,
   integrationId: INTEGRATION_ID,
   sessionId: "gmail-demo",

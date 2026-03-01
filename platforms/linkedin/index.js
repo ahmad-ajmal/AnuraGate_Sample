@@ -73,6 +73,7 @@ async function chat(conversationId, userMessage) {
 // ---------------------------------------------------------------------------
 
 const watcher = new GateLinkedInWatcher({
+  gateUrl: GATE_URL,
   gateKey: GATE_KEY,
   integrationId: INTEGRATION_ID,
   sessionId: "linkedin-demo",

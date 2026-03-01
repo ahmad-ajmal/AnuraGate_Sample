@@ -90,6 +90,7 @@ async function chat(senderId, userMessage) {
 // ---------------------------------------------------------------------------
 
 const watcher = new GateWhatsAppBusinessWatcher({
+  gateUrl: GATE_URL,
   gateKey: GATE_KEY,
   integrationId: INTEGRATION_ID,
   accessToken: ACCESS_TOKEN,
