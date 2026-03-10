@@ -1,0 +1,16 @@
+{
+  "name": "anuragate-example-jira",
+  "version": "1.0.0",
+  "description": "AnuraGate Jira AI agent example",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@anura-gate/watcher-jira": "^0.2.5",
+    "dotenv": "^17.3.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
