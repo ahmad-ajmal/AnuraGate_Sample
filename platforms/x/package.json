@@ -1,0 +1,16 @@
+{
+  "name": "anuragate-example-x",
+  "version": "1.0.0",
+  "description": "AnuraGate X AI agent example",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@anura-gate/watcher-x": "^0.2.0",
+    "dotenv": "^17.3.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
